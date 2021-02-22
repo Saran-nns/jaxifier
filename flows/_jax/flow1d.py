@@ -42,8 +42,8 @@ def f_inv(z, params):
         vector: Generate the training data x back from z
     """
 
-    return (z > 0).type(jnp.float32)*(
-        z-params['beta'])/params['alpha'] + (z <= 0).type(jnp.float32)*(jnp.log(z+1)-params['beta'])/params['alpha']
+    return jnp.where(z > 0,
+                     z-params['beta']/params['alpha'], (jnp.log(z+1)-params['beta'])/params['alpha'])
 
 
 def jac_f(x):

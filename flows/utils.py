@@ -8,9 +8,9 @@ import matplotlib.pyplot as plt
 def get_laplace(n_samples):
     laplace_dist = tfp.distributions.Laplace(0.0, 1.0)
     data = laplace_dist.sample([1000, ])
-    sns.distplot(data)
-    plt.title('Training data')
-    plt.show()
+    # sns.distplot(data)
+    # plt.title('Training data')
+    # plt.show()
     return data
 
 
@@ -19,7 +19,7 @@ def get_gaussian(n_samples):
     base_dist = tfp.distributions.Normal(base_mu, base_cov)
     z = base_dist.rsample(sample_shape=(1000,))
     # plt.scatter(Z[:, 0], Z[:, 1])
-    sns.distplot(z)
-    plt.title('Source distribution')
-    plt.show()
+    # sns.distplot(z)
+    # plt.title('Source distribution')
+    # plt.show()
     return z
