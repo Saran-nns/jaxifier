@@ -1,7 +1,19 @@
 import jax
 import jax.numpy as jnp
-from jax import jit, random
+from jax import jit, grad, vmap, random
 import tensorflow_probability as tfp
+from jax.experimental import optimizers
+import tensorflow as tf
+import seaborn as sns
+from tqdm import tqdm
+import os
+import sys
+import time
+try:
+    from flows import utils
+except:
+    sys.path.insert(1, 'N:/jaxifier/')
+    from flows import utils
 
 # Generate key which is used to generate random numbers
 key = random.PRNGKey(1)
@@ -145,11 +157,53 @@ class NormalizingFlowModel:
         return x
 
 
-def train(model, _x, n_flows, key):
+def loss(x, model, params):
+    """Compute the negative log likelihood of x
 
-    params = [initialize_param(key) for _ in range(n_flows)]
+    Args:
+        model (tf.keras.Model): Instance of Normalizing Flow 1D model
+        x (vector): Sample of data from complex distribution X (1D)
 
-    # Forward pass
-    z, prior_logprob, log_det = nf_model.forward(_x, params)
+    Returns:
+        _z (vector): Normalized vector of x
+        loss (int): Negative log likelihood scaled by the determinant of the transformation function with respect to x
+    """
+    _, prior_logprob, log_det = model.forward(x, params)
+    return jnp.mean(-prior_logprob - log_det)
 
-    return loss
+
+@jit
+def update(model, params, x, lr):
+    grads = grad(loss)(x, model, params)
+    return [(alpha - lr * dalpha, beta - lr * dbeta)
+            for (alpha, beta), (dalpha, dbeta) in zip(params, grads)]
+
+
+if __name__ == '__main__':
+
+    # Training data
+    X = utils.get_laplace(1000)
+
+    # Dataset instance
+    DATASET = tf.data.Dataset.from_tensor_slices(tf.dtypes.cast(X,
+                                                                dtype=tf.float64)).batch(1000,
+                                                                                         drop_remainder=True)
+    DATASET = DATASET.prefetch(tf.data.experimental.AUTOTUNE)
+
+    # Model instance
+    N_FLOWS = 100
+    MODEL = NormalizingFlowModel()
+    PARAMS = [MODEL.initialize_param(key) for _ in range(N_FLOWS)]
+
+    # Training hyperparameters
+    EPOCHS = 1000
+    LR = 0.001
+    OPT_INIT, OPT_UPDATE, GET_PARAMS = optimizers.adam(LR)
+    OPT_STATE = OPT_INIT(PARAMS)
+
+    # Training Loop
+    for epoch in range(EPOCHS):
+        start_time = time.time()
+        for x in DATASET:
+            params = update(MODEL, PARAMS, x, LR)
+        epoch_time = time.time() - start_time
