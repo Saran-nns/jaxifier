@@ -1,0 +1,163 @@
+2021-02-22 14:37:28,023 DEBUG    root            Loaded Command Group: ['gcloud', 'components']
+2021-02-22 14:37:28,025 DEBUG    root            Loaded Command Group: ['gcloud', 'components', 'update']
+2021-02-22 14:37:28,028 DEBUG    root            Running [gcloud.components.update] with arguments: [--quiet: "True", COMPONENT-IDS:8: "['gcloud', 'core', 'bq', 'gsutil', 'compute', 'preview', 'alpha', 'beta']"]
+2021-02-22 14:37:28,037 INFO     ___FILE_ONLY___ Beginning update. This process may take several minutes.
+
+2021-02-22 14:37:28,084 WARNING  root            Component [preview] no longer exists.
+2021-02-22 14:37:28,084 WARNING  root            Component [compute] no longer exists.
+2021-02-22 14:37:28,085 INFO     ___FILE_ONLY___ 
+
+2021-02-22 14:37:28,086 INFO     ___FILE_ONLY___ 
+Your current Cloud SDK version is: 328.0.0
+
+2021-02-22 14:37:28,086 INFO     ___FILE_ONLY___ Installing components from version: 328.0.0
+
+2021-02-22 14:37:28,086 INFO     ___FILE_ONLY___ 
+
+2021-02-22 14:37:28,163 INFO     ___FILE_ONLY___ ┌──────────────────────────────────────────────┐
+2021-02-22 14:37:28,163 INFO     ___FILE_ONLY___ 
+
+2021-02-22 14:37:28,164 INFO     ___FILE_ONLY___ │     These components will be installed.      │
+2021-02-22 14:37:28,164 INFO     ___FILE_ONLY___ 
+
+2021-02-22 14:37:28,164 INFO     ___FILE_ONLY___ ├───────────────────────┬────────────┬─────────┤
+2021-02-22 14:37:28,164 INFO     ___FILE_ONLY___ 
+
+2021-02-22 14:37:28,164 INFO     ___FILE_ONLY___ │          Name         │  Version   │   Size  │
+2021-02-22 14:37:28,164 INFO     ___FILE_ONLY___ 
+
+2021-02-22 14:37:28,164 INFO     ___FILE_ONLY___ ├───────────────────────┼────────────┼─────────┤
+2021-02-22 14:37:28,164 INFO     ___FILE_ONLY___ 
+
+2021-02-22 14:37:28,164 INFO     ___FILE_ONLY___ │ 
+2021-02-22 14:37:28,164 INFO     ___FILE_ONLY___ gcloud Alpha Commands
+2021-02-22 14:37:28,164 INFO     ___FILE_ONLY___  
+2021-02-22 14:37:28,164 INFO     ___FILE_ONLY___ │ 
+2021-02-22 14:37:28,164 INFO     ___FILE_ONLY___ 2019.05.17
+2021-02-22 14:37:28,165 INFO     ___FILE_ONLY___  
+2021-02-22 14:37:28,165 INFO     ___FILE_ONLY___ │ 
+2021-02-22 14:37:28,165 INFO     ___FILE_ONLY___ < 1 MiB
+2021-02-22 14:37:28,165 INFO     ___FILE_ONLY___  
+2021-02-22 14:37:28,165 INFO     ___FILE_ONLY___ │
+2021-02-22 14:37:28,165 INFO     ___FILE_ONLY___ 
+
+2021-02-22 14:37:28,165 INFO     ___FILE_ONLY___ │ 
+2021-02-22 14:37:28,165 INFO     ___FILE_ONLY___ gcloud Beta Commands 
+2021-02-22 14:37:28,165 INFO     ___FILE_ONLY___  
+2021-02-22 14:37:28,165 INFO     ___FILE_ONLY___ │ 
+2021-02-22 14:37:28,165 INFO     ___FILE_ONLY___ 2019.05.17
+2021-02-22 14:37:28,165 INFO     ___FILE_ONLY___  
+2021-02-22 14:37:28,165 INFO     ___FILE_ONLY___ │ 
+2021-02-22 14:37:28,166 INFO     ___FILE_ONLY___ < 1 MiB
+2021-02-22 14:37:28,166 INFO     ___FILE_ONLY___  
+2021-02-22 14:37:28,166 INFO     ___FILE_ONLY___ │
+2021-02-22 14:37:28,166 INFO     ___FILE_ONLY___ 
+
+2021-02-22 14:37:28,166 INFO     ___FILE_ONLY___ └───────────────────────┴────────────┴─────────┘
+2021-02-22 14:37:28,166 INFO     ___FILE_ONLY___ 
+
+2021-02-22 14:37:28,166 INFO     ___FILE_ONLY___ 
+
+2021-02-22 14:37:28,200 INFO     ___FILE_ONLY___ For the latest full release notes, please visit:
+  https://cloud.google.com/sdk/release_notes
+
+
+2021-02-22 14:37:28,207 INFO     ___FILE_ONLY___ ╔════════════════════════════════════════════════════════════╗
+
+2021-02-22 14:37:28,207 INFO     ___FILE_ONLY___ ╠═ Creating update staging area                             ═╣
+
+2021-02-22 14:37:28,207 INFO     ___FILE_ONLY___ ╚
+2021-02-22 14:37:28,207 INFO     ___FILE_ONLY___ ══════
+2021-02-22 14:37:29,062 INFO     ___FILE_ONLY___ ══════
+2021-02-22 14:37:29,063 INFO     ___FILE_ONLY___ ══════
+2021-02-22 14:37:29,951 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:29,994 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:30,035 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:30,091 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:30,129 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:30,190 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:30,259 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:30,323 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:30,380 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:30,422 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:30,479 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:30,533 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:30,589 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:30,640 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:30,686 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:30,737 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:30,774 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:30,815 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:30,858 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:30,904 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:30,947 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:31,012 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:31,062 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:31,185 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:31,276 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:31,660 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:31,699 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:31,745 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:31,782 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:31,825 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:31,863 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:31,889 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:31,919 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:31,975 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:32,086 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:32,160 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:32,230 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:32,281 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:32,330 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:32,392 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:32,441 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:32,532 INFO     ___FILE_ONLY___ ═
+2021-02-22 14:37:32,532 INFO     ___FILE_ONLY___ ╝
+
+2021-02-22 14:37:34,447 INFO     ___FILE_ONLY___ ╔════════════════════════════════════════════════════════════╗
+
+2021-02-22 14:37:34,447 INFO     ___FILE_ONLY___ ╠═ Installing: gcloud Alpha Commands                        ═╣
+
+2021-02-22 14:37:34,447 INFO     ___FILE_ONLY___ ╚
+2021-02-22 14:37:34,469 INFO     ___FILE_ONLY___ ══════════════════════════════
+2021-02-22 14:37:34,471 INFO     ___FILE_ONLY___ ═══════
+2021-02-22 14:37:34,471 INFO     ___FILE_ONLY___ ════════
+2021-02-22 14:37:34,471 INFO     ___FILE_ONLY___ ═══════
+2021-02-22 14:37:34,472 INFO     ___FILE_ONLY___ ════════
+2021-02-22 14:37:34,472 INFO     ___FILE_ONLY___ ╝
+
+2021-02-22 14:37:34,482 INFO     ___FILE_ONLY___ ╔════════════════════════════════════════════════════════════╗
+
+2021-02-22 14:37:34,482 INFO     ___FILE_ONLY___ ╠═ Installing: gcloud Beta Commands                         ═╣
+
+2021-02-22 14:37:34,482 INFO     ___FILE_ONLY___ ╚
+2021-02-22 14:37:34,506 INFO     ___FILE_ONLY___ ══════════════════════════════
+2021-02-22 14:37:34,507 INFO     ___FILE_ONLY___ ═══════
+2021-02-22 14:37:34,507 INFO     ___FILE_ONLY___ ════════
+2021-02-22 14:37:34,508 INFO     ___FILE_ONLY___ ═══════
+2021-02-22 14:37:34,508 INFO     ___FILE_ONLY___ ════════
+2021-02-22 14:37:34,508 INFO     ___FILE_ONLY___ ╝
+
+2021-02-22 14:37:34,518 INFO     ___FILE_ONLY___ ╔════════════════════════════════════════════════════════════╗
+
+2021-02-22 14:37:34,518 INFO     ___FILE_ONLY___ ╠═ Creating backup and activating new installation          ═╣
+
+2021-02-22 14:37:34,518 INFO     ___FILE_ONLY___ ╚
+2021-02-22 14:37:34,519 DEBUG    root            Attempting to move directory [/tools/google-cloud-sdk] to [/tools/google-cloud-sdk.staging/.install/.backup]
+2021-02-22 14:37:34,519 INFO     ___FILE_ONLY___ ══════════════════════════════
+2021-02-22 14:37:34,519 DEBUG    root            Attempting to move directory [/tools/google-cloud-sdk.staging] to [/tools/google-cloud-sdk]
+2021-02-22 14:37:34,519 INFO     ___FILE_ONLY___ ══════════════════════════════
+2021-02-22 14:37:34,519 INFO     ___FILE_ONLY___ ╝
+
+2021-02-22 14:37:34,523 DEBUG    root            Updating notification cache...
+2021-02-22 14:37:34,524 INFO     ___FILE_ONLY___ 
+
+2021-02-22 14:37:34,529 INFO     ___FILE_ONLY___ Performing post processing steps...
+2021-02-22 14:37:34,529 DEBUG    root            Executing command: ['python3', '-S', '/tools/google-cloud-sdk/lib/gcloud.py', 'components', 'post-process']
+2021-02-22 14:37:49,675 DEBUG    ___FILE_ONLY___ 
+2021-02-22 14:37:49,676 DEBUG    ___FILE_ONLY___ 
+2021-02-22 14:37:49,804 INFO     ___FILE_ONLY___ 
+Update done!
+
+
+2021-02-22 14:37:49,808 INFO     root            Display format: "none"
