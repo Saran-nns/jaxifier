@@ -14,11 +14,6 @@ except:
 
 
 class TransformationLayer1D(tf.keras.layers.Layer):
-    """
-
-    Args:
-        tf (instance): Custom tf keras layer instance
-    """
 
     def __init__(self):
         super(TransformationLayer1D, self).__init__()
