@@ -11,7 +11,7 @@ The repository is under active developement.
 - [ ] RealNVPs
 - [ ] GLOW
 
-# Training time: PyTorch vs Tensorflow vs JAX
+### Training time: PyTorch vs Tensorflow vs JAX
 | Model | Dataset  | Data Size  | Flow Length  | Num_Epochs  | Pytorch (sec)  |Tensorflow (sec)  |JAX (sec)
 | :---: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | Linear Flow | 1D | 1000 | 100 | 1000 | ~72 | ~160 | ~68
