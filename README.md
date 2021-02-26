@@ -13,5 +13,5 @@ The repository is under active developement and the support the current SOT mode
 
 # Training time: PyTorch vs Tensorflow vs JAX
 | Model | Dataset  | Data Size  | Flow Length  | Num_Epochs  | Pytorch (sec)  |Tensorflow (sec)  |JAXs (sec)  |
-| :---:   | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| :---:   | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | Linear Flow | 1D | 1000 | 100 | 1000 | ~72 | ~160 | ~68
