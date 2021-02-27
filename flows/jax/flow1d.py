@@ -10,14 +10,9 @@ import os
 import sys
 import time
 import tensorflow_datasets as tfds
-
-try:
-    from flows import utils
-except:
-    sys.path.insert(1, 'N:/jaxifier/')
-    from flows import utils
-    from flows.jax import helpers
-    from flows.helpers import *
+from flows import utils
+from flows.jax import helpers
+from flows.helpers import *
 
 # Generate key which is used to generate random numbers
 key = random.PRNGKey(1)
@@ -186,13 +181,14 @@ def train(num_epochs, params):
 
     # Train Loop
     params = get_params(opt_state)
+    start_time = time.time()
     for _ in range(num_epochs):
-        start_time = time.time()
         for x in DATASET:
             x = jnp.array(x)
             params, opt_state, loss_ = update(params, x, opt_state)
+    epoch_time = time.time() - start_time
 
-        epoch_time = time.time() - start_time
+    print('Time', epoch_time)
 
 
 if __name__ == "__main__":
