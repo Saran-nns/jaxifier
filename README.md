@@ -3,10 +3,11 @@
 Normalizing Flow models using Pytorch, Tensorflow and XLA accellarated JAX which allows for automatically parallelising code across multiple accelerators such as GPUs and TPUs.
 
 The repository is under active developement.
-
-- [ ] Linear Flows [[Pytorch](https://colab.research.google.com/drive/1S-bVMrnnBTIoQZ1OI_5Cd13FrVyKfJ2z#scrollTo=yHrdghn5W4Ca)]        [[TensorFlow]()]   [[JAX](https://colab.research.google.com/drive/1AiKQK5q-7Xy9-N6TfMjoxbzgKQy5BYG6#scrollTo=NIovaeRtvkSI)]
-- [ ] Planar Flows
-- [ ] Radial Flows
+- [ ] Linear Flow
+- [x] Non-Linear Flow [[Pytorch](https://colab.research.google.com/drive/1S-bVMrnnBTIoQZ1OI_5Cd13FrVyKfJ2z#scrollTo=yHrdghn5W4Ca)]        [[TensorFlow]()]   [[JAX](https://colab.research.google.com/drive/1AiKQK5q-7Xy9-N6TfMjoxbzgKQy5BYG6#scrollTo=NIovaeRtvkSI)]
+- [ ] Affine Flow
+- [ ] Planar Flow
+- [ ] Radial Flow
 - [ ] Coupling and Autoregressive Flows
 - [ ] RealNVPs
 - [ ] GLOW
