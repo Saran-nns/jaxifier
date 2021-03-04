@@ -43,10 +43,10 @@ def normalizing_direction(x, param):
     """
 
     # Convert the laplace data into gaussian distribution f:
-    _z = param[0]*x + param[0]
+    _z = jnp.exp(param[0])*x + param[0]
 
     # Jacobian of f with respect to x
-    log_det = jnp.log(jnp.abs(param[0]))
+    log_det = -param[0]
 
     return _z, log_det
 
@@ -59,7 +59,7 @@ def generative_direction(z, param):
         z (vector): Samples from the base distribution
         param (dict): With parameter alpha and beta of the transformation layer
         """
-    _x = (z - param[1])/param[0]
+    _x = (z - param[1])*jnp.exp(-param[0])
     return _x
 
 

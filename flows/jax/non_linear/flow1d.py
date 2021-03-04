@@ -17,6 +17,8 @@ from flows.helpers import *
 # Generate key which is used to generate random numbers
 key = random.PRNGKey(1)
 
+# TRANSFORMATION LAYER
+
 
 def initialize_parameters(n_flows, key):
     """ Initialize the weights of all layers of a linear layer network """
@@ -28,6 +30,8 @@ def initialize_parameters(n_flows, key):
         return scale * random.normal(w_key, (1,)), scale * random.normal(b_key, (1,))
     return [initialize_layer(k) for k in keys]
 
+
+# FORWARD AND INVERSE FLOW
 
 def normalizing_direction(x, param):
     """Normalizing flow direction from some complex distribution to simple known
@@ -43,10 +47,13 @@ def normalizing_direction(x, param):
     """
 
     # Convert the laplace data into gaussian distribution f:
-    _z = param[0]*x + param[0]
+    _z = helpers.f(x, param)
 
     # Jacobian of f with respect to x
-    log_det = jnp.log(jnp.abs(param[0]))
+    jac_fx = helpers.jac_f(x, param)
+
+    # Log absolute value of the determinant
+    log_det = jnp.log(jnp.abs(jac_fx))
 
     return _z, log_det
 
@@ -59,8 +66,10 @@ def generative_direction(z, param):
         z (vector): Samples from the base distribution
         param (dict): With parameter alpha and beta of the transformation layer
         """
-    _x = (z - param[1])/param[0]
+    _x = helpers.f_inv(z, param)
     return _x
+
+# NORMALIZING FLOW MODEL
 
 
 def forward(_x, params):
@@ -113,6 +122,8 @@ def sample(n_samples, params):
     z = jax.random.normal(key, (n_samples,))
     x = inverse(z, params)
     return x
+
+# OBJECTIVE FUNCTION
 
 
 def loss(params, x):
