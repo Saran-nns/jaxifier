@@ -11,8 +11,6 @@ import numpy as np
 torch.manual_seed(0)
 np.random.seed(0)
 
-# Dataset
-
 
 def get_laplace(n_samples):
     laplace_dist = Laplace(torch.tensor([0.0]), torch.tensor([1.0]))
@@ -27,8 +25,6 @@ def get_gaussian(n_samples):
     z = base_dist.rsample(sample_shape=(1000,))
 
     return z
-
-# FLOW LAYER
 
 
 class TransformationLayer(nn.Module):
@@ -49,7 +45,6 @@ class TransformationLayer(nn.Module):
         return x
 
 
-# FLOW MODEL
 class NormalizingFlowModel(nn.Module):
 
     """Wrapper provide the general skeleton/structure for Normalizing Flow models with Gaussian Prior"""
@@ -79,8 +74,6 @@ class NormalizingFlowModel(nn.Module):
         z = self.prior.sample((n_samples,)).squeeze()
         x, _ = self.inverse(z)
         return x
-
-# TRAIN LOOP
 
 
 def train(model, data, epochs, optim):
