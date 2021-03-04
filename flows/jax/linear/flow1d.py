@@ -187,7 +187,6 @@ def train(num_epochs, params):
             x = jnp.array(x)
             params, opt_state, loss_ = update(params, x, opt_state)
     epoch_time = time.time() - start_time
-
     print('Time', epoch_time)
 
 
