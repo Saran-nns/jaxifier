@@ -26,12 +26,35 @@ def initialize_parameters(n_flows, key):
     # Initialize a single layer with Gaussian weights -  helper function
 
     def initialize_layer(key, scale=1e-2):
-        w_key, b_key = random.split(key)
-        return scale * random.normal(w_key, (1,)), scale * random.normal(b_key, (1,))
+        w_key, b_key, u_key = random.split(key)
+        return scale * random.normal(w_key, (1, 2)), scale * random.normal(b_key, (1,)), scale * random.normal(u_key, (1, 2))
     return [initialize_layer(k) for k in keys]
 
 
+def planar(x, param):
+
+    # Ensure condition for invertibility of transformation when using tanh function: jnp.matmul(param['u'], param['w'].T) > -1
+    if jnp.matmul(param['u'], param['w'].T) < -1:
+        wtu = jnp.matmul(param['u'], param['w'])
+        m_wtu = -1 + jnp.log(1 + jnp.exp(wtu))
+        param['u'] = (
+            param['u'] + (m_wtu - wtu) *
+            param['w'] / jnp.linalg.norm(param['w']) ** 2
+        )
+    else:
+        pass
+    z = x + param['u'] * jnp.tanh((jnp.matmul(x, param['w'].T) + param['b']))
+
+    # Compute Log determinant Jacobian
+    a = jnp.matmul(x, param['w'].T) + param['b']
+    psi = (1 - jnp.tanh(a ** 2)) * param['w']
+    abs_det = (1 + jnp.matmul(param['u'], psi.T)).abs()
+    log_det = jnp.log(1e-4 + abs_det)
+
+    return z, log_det, param
+
 # FORWARD AND INVERSE FLOW
+
 
 def normalizing_direction(x, param):
     """Normalizing flow direction from some complex distribution to simple known
@@ -47,32 +70,15 @@ def normalizing_direction(x, param):
     """
 
     # Convert the laplace data into gaussian distribution f:
-    _z = helpers.f(x, param)
+    z, log_det, param = planar(x, param)
 
-    # Jacobian of f with respect to x
-    jac_fx = helpers.jac_f(x, param)
+    return z, log_det, param
 
-    # Log absolute value of the determinant
-    log_det = jnp.log(jnp.abs(jac_fx))
-
-    return _z, log_det
-
-
-def generative_direction(z, param):
-    """Generative distribution from the base distribution to some complex distribution
-        X = g(Z)
-
-    Args:
-        z (vector): Samples from the base distribution
-        param (dict): With parameter alpha and beta of the transformation layer
-        """
-    _x = helpers.f_inv(z, param)
-    return _x
 
 # NORMALIZING FLOW MODEL
 
 
-def forward(_x, params):
+def forward(_x, param):
     """Compute Normalizing direction of the flow applying given number of bijective transformations
 
     Args:
@@ -86,44 +92,11 @@ def forward(_x, params):
     """
     log_det = 0.
     for param in params[:-1]:  # Forward flow
-        _x, ld = normalizing_direction(_x, param)
+        _x, ld, param = normalizing_direction(_x, param)
         log_det += ld
     prior_logprob = jax.scipy.stats.norm.logpdf(_x, loc=0, scale=1)
     z = _x
     return z, jnp.nan_to_num(prior_logprob), log_det
-
-
-def inverse(_z, params):
-    """Compute the generative direction of the flow given the number of bijective transformations
-
-    Args:
-        _z (vector): Latent samples
-        params (tuple): Parameters of each flow as a tuple
-
-    Returns:
-        x (vector): Generated observables
-    """
-    for param in params[::-1]:  # Reverse flow
-        _z = generative_direction(_z, param)
-    x = _z
-    return x
-
-
-def sample(n_samples, params):
-    """Sample data from the latent and generate data using the inverse flow model
-
-    Args:
-        n_samples (int): Sample length
-        params (tuple): Parameters of each flow as a tuple
-
-    Returns:
-        x (vector): Generated observables
-    """
-    z = jax.random.normal(key, (n_samples,))
-    x = inverse(z, params)
-    return x
-
-# OBJECTIVE FUNCTION
 
 
 def loss(params, x):
@@ -141,7 +114,7 @@ def loss(params, x):
     return loss_
 
 
-@jit
+@ jit
 def update(params, x, opt_state):
     """Wrappper to update parameters of the model
 

@@ -6,7 +6,7 @@ The repository is under active developement.
 - [x] Linear Flow : [x] PyTorch [x] TensorFlow [x] Jax
 - [x] Non-Linear Flow: [x] PyTorch [x] TensorFlow [x] Jax
 - [x] Affine Flow: [x] PyTorch [x] TensorFlow [x] Jax
-- [ ] Planar Flow
+- [ ] Planar Flow: [ ] PyTorch [ ] TensorFlow [ ] Jax
 - [ ] Radial Flow
 - [ ] Coupling and Autoregressive Flows
 - [ ] RealNVPs
