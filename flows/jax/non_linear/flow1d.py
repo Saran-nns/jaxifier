@@ -157,7 +157,6 @@ def train_step(state, x):
     grad_fn = jax.value_and_grad(loss_fn, has_aux=False)
     loss, grads = grad_fn(state.params)
     state = state.apply_gradients(grads=grads)
-    # metrics = compute_metrics(logits, batch['label'])
     return loss, state
 
 
@@ -172,9 +171,9 @@ def train_epoch(state, train_ds):
 
 @jax.jit
 def eval_step(params, x):
-    z, prior_logprob, log_det = NormalizingFlow(
+    z, _, _ = NormalizingFlow(
         n_flows=10, features=1, train=True).apply({'params': params}, x)
-    _, x, prior_logprob, log_det = NormalizingFlow(
+    _, x, _, _ = NormalizingFlow(
         n_flows=10, features=1, train=False).apply({'params': params}, z)
     return z, x
 
